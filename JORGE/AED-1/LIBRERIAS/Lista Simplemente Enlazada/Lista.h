@@ -25,4 +25,5 @@ public:
 	Nodo* buscar(Nodo* n);
 	void modificar(int datoViejo,int datoNuevo);
 	bool eliminar(int dato);
+	bool listaVacia();
 };

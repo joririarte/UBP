@@ -17,28 +17,26 @@ Lista::~Lista()
 void Lista::insertar(int data)
 {
 	//si la lista esta vacia 
-	//el puntero raiz apuntarÃ¡ al nuevo nodo
+	//el puntero raiz apuntará al nuevo nodo
 	if (raiz == nullptr)
 		raiz = new Nodo(data);
-	//si la lista no estÃ¡ vacia
-	//se verifica que el dato que se quiere ingresar no estÃ¡ en la lista
-	//se obtiene el Ãºltimo elemento y se hace que apunte al nuevo elemento
-	else if (buscar(data) == nullptr)
+	//si la lista no está vacia
+	//se obtiene el último elemento y se hace que apunte al nuevo elemento
+	else
 		getLast()->sig = new Nodo(data);
 }
 
 //Inserta un dato al principio de la lista
 void Lista::insertarAntes(int data)
 {
-	//Si la lista estÃ¡ vacia
-	//El puntero raiz apuntarÃ¡ al nuevo nodo
+	//Si la lista está vacia
+	//El puntero raiz apuntará al nuevo nodo
 	if (raiz == nullptr)
 		raiz = new Nodo(data);
-	//si la lista no estÃ¡ vacia
-	//se verifica que el dato que se quiere ingresar no estÃ¡ en la lista
-	//Se cambia el puntero raÃ­z hacia el nuevo nodo
-	//y el nuevo nodo apuntarÃ¡ a donde apuntaba raiz
-	else if (buscar(data) == nullptr)
+	//si la lista no está vacia
+	//Se cambia el puntero raíz hacia el nuevo nodo
+	//y el nuevo nodo apuntará a donde apuntaba raiz
+	else
 		raiz = new Nodo(data, raiz);
 }
 
@@ -47,12 +45,10 @@ void Lista::insertarEntre(int data, int anterior)
 {
 	//Solo si la lista tiene contenido
 	if (raiz != nullptr)
-		//se verifica que el dato que se quiere ingresar no estÃ¡ en la lista
 		//se busca el elemento anterior de donde se quiere insertar
 		//se cambia su apuntado hacia el nuevo nodo
 		//y el nuevo nodo apunta hacia donde apuntaba el anterior
-		if (buscar(data) == nullptr)
-			buscar(anterior)->sig = new Nodo(data, buscar(anterior)->sig);
+		buscar(anterior)->sig = new Nodo(data, buscar(anterior)->sig);
 }
 
 //muestra la lista
@@ -80,7 +76,7 @@ void Lista::mostrar()
 //Obtiene el ultimo nodo en la lista
 Lista::Nodo* Lista::getLast()
 {
-	//Recorro la lista con un puntero hasta el Ãºltimo no vacÃ­o
+	//Recorro la lista con un puntero hasta el último no vacío
 	Nodo* recorrido = raiz;
 	while (recorrido->sig != nullptr)
 		recorrido = recorrido->sig;
@@ -93,7 +89,7 @@ Lista::Nodo* Lista::getRaiz()
 	return raiz;
 }
 
-//Obtiene el tamaÃ±o de la lista
+//Obtiene el tamaño de la lista
 int Lista::size()
 {
 	//Recorre la lista contando cada nodo hasta el final
@@ -153,15 +149,20 @@ bool Lista::eliminar(int dato)
 	//si lo encuentra
 	if (n != nullptr) {
 		//si el nodo es distinto a la raiz
-		//el anterior apuntarÃ¡ al siguiente
+		//el anterior apuntará al siguiente
 		if (n != raiz)
 			buscar(n)->sig = n->sig;
 		else
-			//si el nodo es el primero, la raiz apuntarÃ¡ al que seguÃ­a
+			//si el nodo es el primero, la raiz apuntará al que seguía
 			raiz = n->sig;
 		return true;
 	}
 	return false;
+}
+
+bool Lista::listaVacia()
+{
+	return raiz == nullptr;
 }
 
 //Constructor de nodo con parametro data

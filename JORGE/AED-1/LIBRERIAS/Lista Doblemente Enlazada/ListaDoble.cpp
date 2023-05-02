@@ -15,7 +15,7 @@ void ListaDoble::insertarFinal(int data)
 	if (lista == nullptr)
 		lista = new Nodo(data);
 	else 
-		lista->sig = new Nodo(data, nullptr, getLast());
+		lista->sig = new Nodo(data, lista->sig, getLast());
 }
 
 void ListaDoble::insertarAntes(int data)
@@ -23,7 +23,7 @@ void ListaDoble::insertarAntes(int data)
 	if (lista == nullptr)
 		lista = new Nodo(data);
 	else
-		lista = new Nodo(data, getFirst(), nullptr);
+		lista = new Nodo(data, getFirst(), lista->ant);
 }
 
 void ListaDoble::insertarEntre(int data, int ant, int sig)
@@ -87,7 +87,7 @@ void ListaDoble::mostrar()
 {
 	getFirst();
 	int i = 1;
-	while (lista->sig != nullptr) {
+	while (lista != nullptr) {
 		std::cout << "Nodo " << i << ": " 
 				  << lista->info << std::endl;
 		lista = lista->sig;
