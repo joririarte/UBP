@@ -67,8 +67,10 @@ ListaDoble::Nodo* ListaDoble::getRaiz()
 
 ListaDoble::Nodo* ListaDoble::buscar(int data)
 {
+	Nodo* rec = lista;
 	while (lista->info != data && lista->sig != nullptr)
 		lista = lista->sig;
+	lista = rec;
 	while (lista->info != data && lista->ant != nullptr)
 		lista = lista->ant;
 	if (lista->info == data)
