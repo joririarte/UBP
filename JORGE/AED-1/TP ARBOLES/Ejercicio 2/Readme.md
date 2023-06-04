@@ -1,4 +1,4 @@
-# Caso 2
+# Ejercicio 2
 Se carga una base de datos con un conjunto de datos que tiene por clave un valor índice
 entero. Los valores claves son almacenados en una estructura de datos de tipo árbol, que
 permite acelerar la búsqueda de los datos relacionados.
